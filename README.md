@@ -12,3 +12,5 @@ Reproducable code can be done here:
 ```
 make wong
 ```
+
+See more on Kadane's Algorithm: https://en.wikipedia.org/wiki/Maximum_subarray_problem
