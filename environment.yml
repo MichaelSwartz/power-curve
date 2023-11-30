@@ -2,7 +2,11 @@ name: power-curve
 channels:
   - conda-forge
 dependencies:
-  - pandas=1.3.5
   - math=3.12.0
   - make
   - git
+  - numpy
+  - matplotlib
+  - seaborn
+  - pandas=2.0.3
+  - geopandas
