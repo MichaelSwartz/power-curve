@@ -29,16 +29,31 @@ make parse
 ```
 Calculate best efforts and create power curve figure:
 ```
-make best-power
+make critical-power-curve
 ```
-We can add timers to compare different approaches:
+We can add timers to compare different approaches. Although running time is variable and dependents on hardware and other factors, it can provide a useful visualize when the environment is constant:
 ```
-Time to calculate best efforts:  4.82058475
+Time to calculate best efforts:  3.088387625 seconds
 ```
-<p>This will generate a power curve with a linear x scale:</p>
+
+<img src="figs/run-time-dynamic-programming.png" width=500>
+
+<p>We can plot the best efforts for the time intervals with a log scale on the x axis:</p>
 
 <img src="figs/power-curve.png" width=500>
 
 <p>
 We can optimize this further by only calculating the relevant best efforts for 5, 10, 15 seconds, 1 min, 5 min, 10 min, etc... Strava uses an x scale with progressive intervals: the spacing between x ticks is 1 second for 0 to 1 minute efforts, and 5 minutes for efforts over 3 hours.
 </p>
+<p>
+As the duration of an effort increases, each value contributes less to the average (this follows from the law of large numbers). Therefore, we don't need to calculate the best efforts for every possible duration to make an accurate power curve. 
+</p>
+Compare the relative running time using all time intervals, and the minimum required time intervals to construct the power curve:
+
+```
+make kadane-optimization
+```
+
+<img src="figs/run-time-kadane.png" width=500>
+
+<img src="figs/run-time-kadane-required-time-intervals.png" width=500>

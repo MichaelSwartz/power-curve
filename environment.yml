@@ -1,12 +1,11 @@
-name: power-curve
-channels:
-  - conda-forge
-dependencies:
-  - math=3.12.0
-  - make
-  - git
+name: power                                       
+channels:                                                                    
+  - defaults                                                             
+dependencies:                                                                
   - numpy
   - matplotlib
+  - make
   - seaborn
   - pandas=2.0.3
+  - scikit-learn
   - geopandas

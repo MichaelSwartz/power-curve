@@ -34,5 +34,5 @@ def findMaxAverage(arr, time):
 #test case
 a = [1, 5, 0, 3, 4, 6, 12, 2, 3, 2, 8]
 
-print(calculateAvgEffort(a, 1, 4))
-print(findMaxAverage(a, 4))
+# print(calculateAvgEffort(a, 1, 4))
+# print(findMaxAverage(a, 5))

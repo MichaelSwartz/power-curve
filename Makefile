@@ -1,8 +1,10 @@
 wong: 
 	python -B src/codeWong.py
 
-make best-power:
-	python -B src/best-power.py
-	
-make parse:
+critical-power-curve:
+	python -B src/critical-power-curve.py
+
+kadane-optimization:
+	python -B src/kadane-optimization.py
+parse:
 	python -B src/parser.py

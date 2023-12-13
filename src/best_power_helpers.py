@@ -14,6 +14,7 @@ def getBestEffort(powerStream: list, previous: list):
         current = []
         j = 0
         max = 0
+        # calculate the rolling window sums, tracking the current max rolling sum
         for key, value in enumerate(powerStream):
             current.append(value + previous[j])
             j += 1
@@ -26,34 +27,18 @@ def getBestEfforts(powerStream: list) -> list:
     bestEfforts = []
     bestEfforts.append(max(powerStream))
     previous = powerStream
+    time = []
     # iterate through time intervals from 2 seconds to duration of activity
     for i in range(len(powerStream) + 1):
         if i > 1:
+            start = timer()
             current, maxPower = getBestEffort(powerStream[(i -1):], previous)
             bestEfforts.append(maxPower/i)
             previous = current
-    return bestEfforts
+            end = timer()
+            time.append(1000 *(end - start))
+    return bestEfforts, time
 
 def get_best_efforts_df(bestEfforts: list) -> pd.DataFrame:
     best_power_df = pd.DataFrame({"power": bestEfforts})
-    best_power_df = best_power_df[best_power_df['power'] > 0]
     return best_power_df
-
-df = pd.read_csv('data/ride.csv')
-
-start = timer()
-bestEfforts = getBestEfforts(df['power'])
-end = timer()
-
-print("Time to calculate best efforts: ", end - start) # Time in seconds, e.g. 5.38091952400282
-best_power_df = get_best_efforts_df(bestEfforts)
-time = np.arange(0, best_power_df['power'].count())
-
-# x_ticks = 1, 10, 
-plt.figure(figsize=(12,8))
-sns.lineplot(x=time, y=best_power_df['power'])
-
-plt.title("Power Curve")
-plt.xlabel("Time - seconds")
-plt.ylabel("Average Power - watts")
-plt.savefig('figs/power-curve.png')
