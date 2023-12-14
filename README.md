@@ -33,7 +33,7 @@ make critical-power-curve
 ```
 We can add timers to compare different approaches. Although running time is variable and dependents on hardware and other factors, it can provide a useful visualize when the environment is constant:
 ```
-Time to calculate best efforts:  3.088387625 seconds
+Time to calculate best efforts:  19.56735825 seconds
 ```
 
 <img src="figs/run-time-dynamic-programming.png" width=500>
@@ -51,9 +51,12 @@ As the duration of an effort increases, each value contributes less to the avera
 Compare the relative running time using all time intervals, and the minimum required time intervals to construct the power curve:
 
 ```
-make kadane-optimization
+make kadane-efficient
 ```
 
 <img src="figs/run-time-kadane.png" width=500>
 
 <img src="figs/run-time-kadane-required-time-intervals.png" width=500>
+
+
+See the [power curve notebook](src/PowerCurve.ipynb) for an approach with vectorization.

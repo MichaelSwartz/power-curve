@@ -4,8 +4,8 @@ wong:
 critical-power-curve:
 	python -B src/critical-power-curve.py
 
-kadane-optimization:
-	python -B src/kadane-optimization.py
+kadane-efficient:
+	python -B src/kadane-efficient.py
 
 parallel-processing:
 	python -B src/parallel-processing.py
