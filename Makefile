@@ -6,5 +6,9 @@ critical-power-curve:
 
 kadane-optimization:
 	python -B src/kadane-optimization.py
+
+parallel-processing:
+	python -B src/parallel-processing.py
+
 parse:
 	python -B src/parser.py

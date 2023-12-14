@@ -8,7 +8,7 @@ from timeit import default_timer as timer
 from plot_helpers import plot_run_time
 from codewong import findMaxAverage
 
-df = pd.read_csv('data/ride-2.csv')
+df = pd.read_csv('data/Unbound_100.csv')
 
 df = df['power'].dropna()
 
@@ -27,21 +27,6 @@ for interval in time_intervals:
 
 plot_run_time(times, 'Run time - Kadane algorithm with required time intervals', 'figs/run-time-kadane-required-time-intervals.png')
 
-# sns.set_style("whitegrid")
-# # plt.xlabel("Time")
-# # plt.ylabel("Average Power - watts")
-# # plt.savefig('figs/power-curve-v2.png')
-
-
-# plt.figure(figsize=(12,8))
-# sns.lineplot(x=np.arange(0, len(times)), y=times)
-
-# plt.title("Run time - Kadane algorithm with required time intervals", fontsize=14)
-# plt.xlabel("Iteration")
-# plt.ylabel("Time - milliseconds")
-# plt.savefig('figs/run-time-kadane-required-time-intervals.png')
-
-# start = timer()
 times = []
 bestEfforts = []
 for i in range(df.count()):
@@ -53,21 +38,4 @@ for i in range(df.count()):
         bestEfforts.append(max)
 
 plot_run_time(times, 'Run time - Kadane algorithm', 'figs/run-time-kadane.png')
-# end = timer()
-# print(bestEfforts)
-# print(end - start)
 
-
-# sns.set_style("whitegrid")
-# plt.xlabel("Time")
-# plt.ylabel("Average Power - watts")
-# plt.savefig('figs/power-curve-v2.png')
-
-
-# plt.figure(figsize=(12,8))
-# sns.lineplot(x=np.arange(0, len(times)), y=times)
-
-# plt.title("Run time - Kadane algorithm", fontsize=14)
-# plt.xlabel("Iteration")
-# plt.ylabel("Time - milliseconds")
-# plt.savefig('figs/run-time-kadane.png')

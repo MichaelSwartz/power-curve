@@ -15,6 +15,8 @@ def calculateAvgEffort(arr, lower, upper):
 #input array arr, a timeframe time
 #returns the maximum average
 def findMaxAverage(arr, time):
+  # print(arr)
+  # print(time)
   n=len(arr)
   #running window of the timeframe
   window=sum(arr[:time])
