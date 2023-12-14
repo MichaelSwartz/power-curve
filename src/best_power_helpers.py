@@ -25,15 +25,17 @@ def getBestEffort(powerStream: list, previous: list):
 def getBestEfforts(powerStream: list) -> list:
     # best efforts array: index corresponds to time interval, value corresponds to the average power value
     bestEfforts = []
+    # the max one second effort
     bestEfforts.append(max(powerStream))
+    # use the one second rolling sums to calculate the two second rolling sums for the first iteration
     previous = powerStream
     time = []
     # iterate through time intervals from 2 seconds to duration of activity
-    for i in range(len(powerStream) + 1):
-        if i > 1:
+    for i in range(1, len(powerStream) + 1):
             start = timer()
             current, maxPower = getBestEffort(powerStream[(i -1):], previous)
-            bestEfforts.append(maxPower/i)
+            bestEfforts.append(maxPower/(i +1))
+            # the current rolling sums will be used to get the rolling sums in the next iteration
             previous = current
             end = timer()
             time.append(1000 *(end - start))

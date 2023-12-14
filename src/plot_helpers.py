@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
-from time_interval_helper import generate_intervals, generate_x_ticks
+from time_interval_helper import generate_x_ticks
 
 def plot_power_curve(intervals, power, xscale: float, file):
     sns.set_style("whitegrid")
