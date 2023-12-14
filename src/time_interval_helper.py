@@ -69,24 +69,24 @@ def generate_x_ticks(activity_duration, scale):
     for i in range(0, len(xticks)):
         xtick_log_value = xticks[i] ** scale
         try:
-            labelvalue = xticks[i]
+            value = xticks[i]
 
-            hourvalue = int(labelvalue / 3600)
-            minutevalue = int((labelvalue - hourvalue * 3600) / 60)
-            secondvalue = int(labelvalue - hourvalue * 3600 - minutevalue * 60)
-            if labelvalue < 60:
-                labeltext = str(secondvalue) + 's'
-            elif labelvalue < 3600:
-                labeltext = str(minutevalue) + 'm '
-                if secondvalue != 0:
-                    labeltext += str(secondvalue) + 's'
+            hour = int(value / 3600)
+            minute = int((value - hour * 3600) / 60)
+            second = int(value - hour * 3600 - minute * 60)
+            if value < 60:
+                text = str(second) + 's'
+            elif value < 3600:
+                text = str(minute) + 'm '
+                if second != 0:
+                    text += str(second) + 's'
             else:
-                labeltext = str(hourvalue) + 'h '
-                if minutevalue != 0:
-                    labeltext += str(minutevalue) + 'm'
+                text = str(hour) + 'h '
+                if minute != 0:
+                    text += str(minute) + 'm'
             xvalues.append(xtick_log_value)
-            xlabels.append(labeltext)
+            xlabels.append(text)
         except:
-            #Reached end of ride
+            #End of ride
             continue
     return xvalues, xlabels
